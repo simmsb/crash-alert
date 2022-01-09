@@ -1,0 +1,12 @@
+[package]
+name = "crash_alert"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+binrw = "0.8.4"
+clap = { version = "3.0.5", features = ["derive"] }
+f1-2021-rust = { git = "https://github.com/simmsb/f1-2021-rust" }
+ureq = { version = "2.4.0", features = ["json"] }
