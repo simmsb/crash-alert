@@ -97,10 +97,10 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     println!("Sure thing!");
 
-    let socket = UdpSocket::bind(("0.0.0.0", 0))?;
-    socket.connect((params.host.as_str(), params.port))?;
+    let socket = UdpSocket::bind(("0.0.0.0", 20777))?;
+    // socket.connect((params.host.as_str(), params.port))?;
 
-    let mut buf = [0; 1500];
+    let mut buf = [0; 2048];
 
     let mut seen_car_damage: Option<CarDamage> = None;
 
@@ -117,6 +117,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             let player_car_idx = msg.header.player_car_idx;
 
             if let Body::CarDamage(damages) = msg.body {
+                println!("received a damage packet");
                 let damage = &damages.car_damages[player_car_idx as usize];
 
                 if let Some(known_damage) = seen_car_damage.as_ref() {
