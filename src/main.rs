@@ -27,10 +27,6 @@ fn alert(damage: &CarDamage, path: &str) -> Result<(), Box<dyn Error>> {
                 "type": "rich",
                 "fields": [
                     {
-                        "name": "Tyre Damage",
-                        "value": format!("{:?}", damage.tyre_damage),
-                    },
-                    {
                         "name": "Brake Damage",
                         "value": format!("{:?}", damage.brake_damage),
                     },
@@ -64,7 +60,6 @@ fn alert(damage: &CarDamage, path: &str) -> Result<(), Box<dyn Error>> {
 
 fn compare_fields_we_care_about(lhs: &CarDamage, rhs: &CarDamage) -> bool {
     let lhs_ = (
-        lhs.tyre_damage.clone(),
         lhs.brake_damage.clone(),
         lhs.front_left_wing_damage,
         lhs.front_right_wing_damage,
@@ -77,7 +72,6 @@ fn compare_fields_we_care_about(lhs: &CarDamage, rhs: &CarDamage) -> bool {
     );
 
     let rhs_ = (
-        rhs.tyre_damage.clone(),
         rhs.brake_damage.clone(),
         rhs.front_left_wing_damage,
         rhs.front_right_wing_damage,
